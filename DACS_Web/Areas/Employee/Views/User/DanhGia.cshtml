@@ -1,0 +1,94 @@
+﻿@model List<DanhGia>
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> _userManager
+@{
+    ViewData["Title"] = "DanhGia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ApplicationUser NguoiNhan = (ApplicationUser)@ViewBag.NguoiNhan;
+    string diaChi = NguoiNhan.QuanHuyen + ", " + NguoiNhan.TinhThanh;
+}
+    
+
+<h2 style="text-align:center">Danh sách bình luận</h2>
+
+
+<style>
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+</style>
+<div style="display:flex;margin-top:50px">
+    <div style="background-color:white; width:30%; margin:5% 5% 0px 0px;top: 50px; height:fit-content;border: 2px solid #ccc;border-radius: 10px; padding:0px 10px">
+        <div>
+            <img src="@NguoiNhan.Avatar" style="width:90px;height:90px;border-radius: 50%" />
+        </div>
+        <a asp-controller="User" asp-action="Details" asp-route-id="@NguoiNhan.UserName">
+            <h4>@NguoiNhan.UserName</h4>
+        </a>
+
+        <p class="lead mb-2">
+            <i class="fa-solid fa-calendar-days"></i>
+            <label style="font-weight:500;font-size:16px;">Ngày tham gia: @NguoiNhan.NgayThamGia.ToString("dd-MM-yyyy") </label>
+        </p>
+        <p class="lead mb-2">
+            <i class="fa-solid fa-phone"></i>
+            <label style="font-weight:500;font-size:16px;">@NguoiNhan.PhoneNumber </label>
+        </p>
+        <p class="lead mb-2">
+            <i class="fa-solid fa-location-dot"></i>
+            <label style="font-weight:500;font-size:16px;">@diaChi</label>
+        </p>
+    </div>
+
+    <div style="width:60%">
+        <div class="comment-section">
+            <ul>
+                @foreach (var binhLuan in Model)
+                {
+                    <div class="container mt-3 card" style="border: 2px solid #ccc;border-radius: 10px; padding-bottom: 10px;">
+                        <div class="row">
+                            <div class="comment-author">
+                                @{
+                                    ApplicationUser NguoiTao = await _userManager.FindByIdAsync(binhLuan.NguoiTaoId);
+                                }
+                                <i class="bi bi-person me-1" style="margin-right: 10px"></i>@NguoiTao.UserName
+
+                            </div>
+                            <div class="comment-content">
+                                @binhLuan.NoiDung
+                            </div>
+                            <div class="comment-date">
+                                @binhLuan.NgayDang.ToString("dd/MM/yyyy HH:mm")
+                            </div>
+                        </div>
+                        
+                    </div>
+                }
+            </ul>
+        </div>
+
+        <div>
+            <div class="pagination-container">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == ViewBag.PageNumber  ? "active" : "")">
+                                <a class="page-link" href="@Url.Action("DanhGia", new {id =NguoiNhan.UserName, pageNumber = i })">@i</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,76 @@
+﻿@model DACS_Web.Models.BaoCao
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> _userManager
+@{
+    ViewData["Title"] = "ChiTietBaoCao";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ApplicationUser NguoiTao = await _userManager.FindByIdAsync(Model.NguoiTaoId);
+    string diaChiNguoiTao = NguoiTao.QuanHuyen + ", " + NguoiTao.TinhThanh;
+    ApplicationUser NguoiNhan = await _userManager.FindByIdAsync(Model.NguoiNhanId);
+    string diaChiNguoiNhan = NguoiNhan.QuanHuyen + ", " + NguoiNhan.TinhThanh;
+}
+
+
+<div style="display:flex">
+    <div style="width:50%; margin-right:20px">
+        <h2 style="text-align:center">Người báo cáo</h2>
+        <div style="background-color:white;top: 50px; height:fit-content;border: 2px solid #ccc;border-radius: 10px;margin-top: 20px; padding: 0px 10px">
+            <div>
+                <img src="@NguoiTao.Avatar" style="width:90px;height:90px;border-radius: 50%" />
+            </div>
+            <a asp-controller="User" asp-action="Details" asp-route-id="@NguoiTao.UserName">
+                <h4>@NguoiTao.UserName</h4>
+            </a>
+
+            <p class="lead mb-2">
+                <i class="fa-solid fa-calendar-days"></i>
+                <label style="font-weight:500;font-size:16px;">Ngày tham gia: @NguoiTao.NgayThamGia.ToString("dd-MM-yyyy") </label>
+            </p>
+            <p class="lead mb-2">
+                <i class="fa-solid fa-phone"></i>
+                <label style="font-weight:500;font-size:16px;">@NguoiTao.PhoneNumber </label>
+            </p>
+            <p class="lead mb-2">
+                <i class="fa-solid fa-location-dot"></i>
+                <label style="font-weight:500;font-size:16px;">@diaChiNguoiTao</label>
+            </p>
+        </div>
+    </div>
+    
+    <div style="width:50%">
+        <h2 style="text-align:center">Người bị báo cáo</h2>
+        <div style="background-color:white;top: 50px; height:fit-content;border: 2px solid #ccc;border-radius: 10px;margin-top: 20px; padding: 0px 10px">
+            <div>
+                <img src="@NguoiNhan.Avatar" style="width:90px;height:90px;border-radius: 50%" />
+            </div>
+            <a asp-controller="User" asp-action="Details" asp-route-id="@NguoiNhan.UserName">
+                <h4>@NguoiNhan.UserName</h4>
+            </a>
+
+            <p class="lead mb-2">
+                <i class="fa-solid fa-calendar-days"></i>
+                <label style="font-weight:500;font-size:16px;">Ngày tham gia: @NguoiNhan.NgayThamGia.ToString("dd-MM-yyyy") </label>
+            </p>
+            <p class="lead mb-2">
+                <i class="fa-solid fa-phone"></i>
+                <label style="font-weight:500;font-size:16px;">@NguoiNhan.PhoneNumber </label>
+            </p>
+            <p class="lead mb-2">
+                <i class="fa-solid fa-location-dot"></i>
+                <label style="font-weight:500;font-size:16px;">@diaChiNguoiNhan</label>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container card gap-3" style="border: 2px solid #ccc;border-radius: 10px; margin-top: 40px;">
+    <h5 style="margin: 10px 0px 10px 0px;">
+        Nội dung
+    </h5>
+
+    <div style="width: 100%">
+        <p style="word-wrap: break-word; font-weight:700">@Model.NoiDung</p>
+        <p style="font-weight:700">Thời gian: @Model.NgayTao.ToString("dd/MM/yyyy HH:mm")</p>
+    </div>
+    
+
+</div>

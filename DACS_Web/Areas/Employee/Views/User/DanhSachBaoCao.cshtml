@@ -1,0 +1,80 @@
+﻿@model List<BaoCao>
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> _userManager
+@{
+    ViewData["Title"] = "DanhSachBaoCao";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    
+}
+
+<style>
+    a{
+        color:black;
+    }
+
+    button {
+        background-color: white !important;
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+</style>
+<h2 style="text-align:center">@ViewBag.Name</h2>
+<div style="padding-bottom:20px">
+    <a asp-controller="User" asp-action="DanhSachBaoCao" >
+        <button class="btn btn-outline-dark button">
+            <i></i>Danh sách
+        </button>
+    </a>
+    <a asp-controller="User" asp-action="ThongKeBaoCao">
+        <button class="btn btn-outline-dark button">
+            <i></i>Thống kê
+        </button>
+    </a>
+
+</div>
+@foreach (var baoCao in Model)
+{
+    <a asp-controller="User" asp-action="ChiTietBaoCao" asp-route-id="@baoCao.BaoCaoId">
+        <div class="container mt-3 card" style="border: 2px solid #ccc;border-radius: 10px; padding-bottom: 10px;">
+            <div class="row">
+                <div class="comment-author">
+                    @{
+                        ApplicationUser NguoiTao = await _userManager.FindByIdAsync(baoCao.NguoiTaoId);
+                    }
+                    <i class="bi bi-person me-1" style="margin-right: 10px"></i>@NguoiTao.UserName
+
+                </div>
+                <div class="comment-content">
+                    @baoCao.NoiDung
+                </div>
+                <div class="comment-date">
+                    @baoCao.NgayTao.ToString("dd/MM/yyyy HH:mm")
+                </div>
+            </div>
+
+        </div>
+    </a>
+}
+
+<div>
+    <div class="pagination-container">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.PageNumber  ? "active" : "")">
+
+                        <a class="page-link" href="@Url.Action("DanhSachBaoCao", new { pageNumber = i })">@i</a>
+                       
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>

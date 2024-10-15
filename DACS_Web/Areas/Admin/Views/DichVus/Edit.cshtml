@@ -1,0 +1,78 @@
+﻿@model DACS_Web.Models.DichVu
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center; margin-top:50px">Chỉnh sửa dịch vụ</h2>
+
+@* <h4>DichVu</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DichVuId" />
+            <div class="form-group">
+                <label asp-for="TenDV" class="control-label"></label>
+                <input asp-for="TenDV" class="form-control" required />
+                <span asp-validation-for="TenDV" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gia" class="control-label"></label>
+                <input asp-for="Gia" class="form-control" type="number" min="1000" step="1000" placeholder="0.00" required />
+                <span asp-validation-for="Gia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div> *@
+
+<div class="row">
+    <div class="col-md-12">
+        <section>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="DichVuId" />
+                <div class="_lk_de">
+                    <div class="form-03-main ">
+                        <div class="form-floating mb-3">
+                            <input asp-for="TenDV" class="form-control" required />
+                            <label asp-for="TenDV" class="control-label"></label>
+                            <span asp-validation-for="TenDV" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="form-floating mb-3" style="display:flex">
+                                <input asp-for="Gia" type="number" style=" border-radius: 20px 0 0 20px;" min="1000" step="1000" class="form-control" placeholder="0.00" required />
+                                <label asp-for="Gia" for="SoTienNap" class="control-label">Đơn giá</label>
+                                <span class="input-group-text" style="padding:10px; margin-left: -5px;">đ</span>
+                            </div>
+                            <span asp-validation-for="Gia" class="text-danger"></span>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="_btn_04">
+                                <input type="submit" value="Save" style="background-color: #2b3990; color:white; border:none; width:100%" />
+                            </div>
+                        </div>
+                        <div class="checkbox form-group">
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

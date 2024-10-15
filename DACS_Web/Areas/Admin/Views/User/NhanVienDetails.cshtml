@@ -1,0 +1,54 @@
+﻿@model DACS_Web.Models.ApplicationUser
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> _userManager
+
+@{
+    ViewData["Title"] = "NhanVienDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    string diaChi = Model.DiaChi + ", " + Model.PhuongXa + ", " + Model.QuanHuyen + ", " + Model.TinhThanh;
+}
+
+<style>
+    label{
+        font-size:20px;
+        font-weight: 500;
+    }
+</style>
+
+<div class="form-03-main " style="width:700px!important;margin-top:5%; border: 2px solid #ccc;border-radius: 10px;">
+    <div class="logo">
+        <img src="@Model.Avatar" style="border-radius: 50%" />
+    </div>
+    <div class="form-group">
+        <h4 style="text-align:center">@Model.UserName</h4>
+        <p class="lead mb-2">
+            <i class="fa-solid fa-user"></i>
+            <label>Họ và tên: @Model.HoTen </label>
+        </p>
+        <p class="lead mb-2">
+            <i class="fa-solid fa-calendar-days"></i>
+            <label>Ngày sinh: @Model.NgaySinh.ToString("dd-MM-yyyy") </label>
+        </p>
+        <p class="lead mb-2">
+            <i class="fa-solid fa-phone"></i>
+            <label>SĐT: @Model.PhoneNumber </label>
+        </p>
+        <p class="lead mb-2">
+            <i class="fa-solid fa-at"></i>
+            <label>Email: @Model.Email </label>
+        </p>
+        <p class="lead mb-2">
+            <i class="fa-solid fa-location-dot"></i>
+            <label>Địa chỉ: @diaChi</label>
+        </p>
+        <p class="lead mb-2">
+            <i class="fa-solid fa-location-dot"></i>
+            <label>Chức vụ: Nhân viên</label>
+        </p>
+        <p class="lead mb-2">
+            <i class="fa-solid fa-calendar-check"></i>
+            <label>Ngày tham gia: @Model.NgayThamGia.ToString("dd-MM-yyyy") </label>
+        </p>
+    </div>
+</div>

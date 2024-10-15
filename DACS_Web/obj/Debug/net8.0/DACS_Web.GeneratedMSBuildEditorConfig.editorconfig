@@ -1,0 +1,271 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DACS_Web
+build_property.RootNamespace = DACS_Web
+build_property.ProjectDir = C:\Users\thang\Desktop\DACS_Web\DACS_Web\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\thang\Desktop\DACS_Web\DACS_Web
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/BaiDangs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmFpRGFuZ3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/BaiDangs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmFpRGFuZ3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/DichVus/ChiTietThongKe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGljaFZ1c1xDaGlUaWV0VGhvbmdLZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/DichVus/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGljaFZ1c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/DichVus/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGljaFZ1c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/DichVus/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGljaFZ1c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/DichVus/ThongKe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGljaFZ1c1xUaG9uZ0tlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/User/BaoCao.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxCYW9DYW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/User/DanhGia.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxEYW5oR2lhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/User/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/User/LichSuGiaoDich.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxMaWNoU3VHaWFvRGljaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/User/NhanVienDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxOaGFuVmllbkRldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/User/QuanLiNguoiDung.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxRdWFuTGlOZ3VvaUR1bmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/User/QuanLiNhanVien.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxRdWFuTGlOaGFuVmllbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Employee/Views/BaiDangs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcQmFpRGFuZ3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Employee/Views/BaiDangs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcQmFpRGFuZ3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Employee/Views/BaiDangs/QuanLi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcQmFpRGFuZ3NcUXVhbkxpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Employee/Views/User/BaoCao.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcVXNlclxCYW9DYW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Employee/Views/User/ChiTietBaoCao.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcVXNlclxDaGlUaWV0QmFvQ2FvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Employee/Views/User/DanhGia.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcVXNlclxEYW5oR2lhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Employee/Views/User/DanhSachBaoCao.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcVXNlclxEYW5oU2FjaEJhb0Nhby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Employee/Views/User/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcVXNlclxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Employee/Views/User/LichSuGiaoDich.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcVXNlclxMaWNoU3VHaWFvRGljaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Employee/Views/User/QuanLi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcVXNlclxRdWFuTGkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Employee/Views/User/ThongKeBaoCao.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcVXNlclxUaG9uZ0tlQmFvQ2FvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Employee/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/BaiDangs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpRGFuZ3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/BaiDangs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpRGFuZ3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/BaiDangs/DichVu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpRGFuZ3NcRGljaFZ1LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/BaiDangs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpRGFuZ3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/BaiDangs/GiaHan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpRGFuZ3NcR2lhSGFuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/BaiDangs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpRGFuZ3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/BaiDangs/QuanLi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpRGFuZ3NcUXVhbkxpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/BaiDangs/YeuThich.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpRGFuZ3NcWWV1VGhpY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/User/BaoCao.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxCYW9DYW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/User/ConfirmPaymentClient.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDb25maXJtUGF5bWVudENsaWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/User/DanhGia.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEYW5oR2lhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/User/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/User/LichSuGiaoDich.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMaWNoU3VHaWFvRGljaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/User/NapTien.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxOYXBUaWVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thang/Desktop/DACS_Web/DACS_Web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ynaensojm9

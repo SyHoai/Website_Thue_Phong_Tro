@@ -1,0 +1,155 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+    string StatusMessage = ViewData["StatusMessage"] as string;
+}
+
+<h3>@ViewData["Title"]</h3>
+<style>
+    .form-group {
+        padding: 0px 0px 17px 0px !important;
+    }
+
+    select {
+        padding: 15px 15px 15px 15px !important;
+    }
+</style>
+@* <div class="row">
+    <div class="col-md-6">
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled />
+                <label asp-for="Username" class="form-label"></label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.HoTen" class="form-control" autocomplete="hoTen" aria-required="true" />
+                <label asp-for="Input.HoTen">Họ và tên</label>
+                <span asp-validation-for="Input.HoTen" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Please enter your phone number." />
+                <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Please enter your phone number." />
+                <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.NgaySinh" class="form-control" type="date" autocomplete="bday" aria-required="true" />
+                <label asp-for="Input.NgaySinh">Ngày sinh</label>
+                <span asp-validation-for="Input.NgaySinh" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Please enter your phone number." />
+                <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+        </form>
+    </div>
+</div> *@
+
+<div class="row">
+    <div class="col-md-12">
+        <section>
+                <form id="profile-form" method="post" enctype="multipart/form-data">
+                <div style="width:60%;">
+                    <div class="text-success">
+                        @StatusMessage
+                    </div>
+                    <div class="form-group">
+                        <input type="file" id="imageInput" name="filses" accept="image/*" style="display: none;">
+                        <button id="chooseImageButton">Chọn avatar</button>
+                        <div id="previewImages" name="files"></div>
+                    </div>
+
+                    <div style="display:flex">
+
+                        <div style="width:50%; margin-right:50px">
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.UserName" class="form-control" autocomplete="username" aria-required="true" readonly />
+                                <label asp-for="Input.UserName">Tên đăng nhập</label>
+                                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.HoTen" class="form-control" autocomplete="hoTen" aria-required="true" required/>
+                                <label asp-for="Input.HoTen">Họ và tên</label>
+                                <span asp-validation-for="Input.HoTen" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="PhoneNumber" aria-required="true" required />
+                                <label asp-for="Input.PhoneNumber">Số điện thoại</label>
+                                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.NgaySinh" class="form-control" type="date" autocomplete="bday" aria-required="true" required />
+                                <label asp-for="Input.NgaySinh">Ngày sinh</label>
+                                <span asp-validation-for="Input.NgaySinh" class="text-danger"></span>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div style="width:50%">
+                            <div class="form-group">
+                                <select class="form-control" id="thanhPhoSelect" required>
+                                    <option value="">Chọn tỉnh thành</option>
+                                </select>
+                                <span class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" id="quanHuyenSelect" required></select>
+                                <span class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" id="phuongXaSelect" required></select>
+                                <span class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.DiaChi" class="form-control" autocomplete="Address" aria-required="true" />
+                                <label asp-for="Input.DiaChi">Đại chỉ</label>
+                                <span asp-validation-for="Input.DiaChi" class="text-danger"></span>
+                            </div>
+
+                            <input type="hidden" id="selectedTinhThanh" name="selectedTinhThanh" />
+                            <input type="hidden" id="selectedQuanHuyen" name="selectedQuanHuyen" />
+                            <input type="hidden" id="selectedPhuongXa" name="selectedPhuongXa" />
+
+                            <div id="actionName" data-action="Manage"></div>
+                        </div>
+
+                    </div>
+
+  
+
+                    <div class="form-group">
+                        <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+                    </div>
+                
+
+
+                </div>
+
+            </form>
+        </section>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/main.js"></script>

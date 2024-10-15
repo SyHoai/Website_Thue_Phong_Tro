@@ -1,0 +1,305 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    .form-group {
+        padding: 0px 0px 17px 0px!important;
+    }
+
+    select{
+        padding:15px 15px 15px 15px!important;
+    }
+</style>
+@* <div class="row">
+    <div class="col-md-4">
+        
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
+            <h2>Create a new account.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-group">
+                <input type="file" id="imageInput" name="filses" accept="image/*" style="display: none;">
+                <button id="chooseImageButton">Chọn avatar</button>
+                <div id="previewImages" name="files"></div>
+            </div>
+
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.UserName" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.UserName">Tên đăng nhập</label>
+                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.HoTen" class="form-control" autocomplete="hoTen" aria-required="true" />
+                <label asp-for="Input.HoTen">Họ và tên</label>
+                <span asp-validation-for="Input.HoTen" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="PhoneNumber" aria-required="true" />
+                <label asp-for="Input.PhoneNumber">Số điện thoại</label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.NgaySinh" class="form-control" type="date" autocomplete="bday" aria-required="true" />
+                <label asp-for="Input.NgaySinh">Ngày sinh</label>
+                <span asp-validation-for="Input.NgaySinh" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label  class="control-label">Tỉnh thành</label>
+                <select  class="form-control" id="thanhPhoSelect" required>
+                    <option value="">Chọn tỉnh thành</option>
+                </select>
+                <span  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label   class="control-label">Quận, huyện</label>
+                <select  class="form-control" id="quanHuyenSelect" required></select>
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Phường, xã</label>
+                <select  class="form-control" id="phuongXaSelect" required></select>
+                <span  class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.DiaChi" class="form-control" autocomplete="Address" aria-required="true" />
+                <label asp-for="Input.DiaChi">Đại chỉ</label>
+                <span asp-validation-for="Input.DiaChi" class="text-danger"></span>
+            </div>
+
+            <input type="hidden" id="selectedTinhThanh" name="selectedTinhThanh" />
+            <input type="hidden" id="selectedQuanHuyen" name="selectedQuanHuyen" />
+            <input type="hidden" id="selectedPhuongXa" name="selectedPhuongXa" />
+            
+            <div id="actionName" data-action="Register"></div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Email">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3 position-relative">
+                <input asp-for="Input.Password" type="password" id="password" class="form-control _ge_de_ol" required  aria-required="true" placeholder="Password" />
+                <label asp-for="Input.Password">Password</label>
+                <span onclick="togglePasswordVisibility()" class="position-absolute end-0 top-50 translate-middle-y" style="margin-right: 20px; cursor: pointer;">
+                    <i id="eyeIcon" class="fa-solid fa-eye"></i>
+                </span>
+            </div>
+            <div class ="form-floating mb-3">
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3 position-relative">
+                <input asp-for="Input.ConfirmPassword" type="password" id="confirmPassword" class="form-control _ge_de_ol" aria-required="true" placeholder="Confirm Password" />
+                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                <span onclick="toggleConfirmPasswordVisibility()" class="position-absolute end-0 top-50 translate-middle-y" style="margin-right: 20px; cursor: pointer;">
+                    <i id="eyeIconConfirmPassword" class="fa-solid fa-eye"></i>
+                </span>
+            </div>
+            <div class="form-floating mb-3">
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="_btn_04">
+                <button id="registerSubmit" type="submit" style="background-color: #2b3990; color:white; border:none; width:100%">Register</button>
+            </div>
+            
+        </form>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h3>Use another service to register.</h3>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+                            about setting up this ASP.NET application to support logging in via external services</a>.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins!)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div> *@
+
+<div class="row">
+    <div class="col-md-12">
+        <section>
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
+                <div class="form-03-main" style="width:60%;">
+                    <div class="form-group">
+                        <input type="file" id="imageInput" name="filses" accept="image/*" style="display: none;">
+                        <button id="chooseImageButton">Chọn avatar</button>
+                        <div id="previewImages" name="files"></div>
+                    </div>
+
+                    <div style="display:flex">
+
+                        <div style="width:50%; margin-right:50px">
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.UserName" class="form-control" autocomplete="username" aria-required="true" required />
+                                <label asp-for="Input.UserName">Tên đăng nhập</label>
+                                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.HoTen" class="form-control" autocomplete="hoTen" aria-required="true" required />
+                                <label asp-for="Input.HoTen">Họ và tên</label>
+                                <span asp-validation-for="Input.HoTen" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="PhoneNumber" aria-required="true" required />
+                                <label asp-for="Input.PhoneNumber">Số điện thoại</label>
+                                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.NgaySinh" class="form-control" type="date" autocomplete="bday" aria-required="true" required />
+                                <label asp-for="Input.NgaySinh">Ngày sinh</label>
+                                <span asp-validation-for="Input.NgaySinh" class="text-danger"></span>
+                            </div>
+
+                                
+
+                               
+                        </div>
+
+                        <div style="width:50%">
+                            <div class="form-group">
+                                <select class="form-control" id="thanhPhoSelect" required>
+                                    <option value="">Chọn tỉnh thành</option>
+                                </select>
+                                <span class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" id="quanHuyenSelect" required></select>
+                                <span class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" id="phuongXaSelect" required></select>
+                                <span class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.DiaChi" class="form-control" autocomplete="Address" aria-required="true" required />
+                                <label asp-for="Input.DiaChi">Đại chỉ</label>
+                                <span asp-validation-for="Input.DiaChi" class="text-danger"></span>
+                            </div>
+
+                            <input type="hidden" id="selectedTinhThanh" name="selectedTinhThanh" />
+                            <input type="hidden" id="selectedQuanHuyen" name="selectedQuanHuyen" />
+                            <input type="hidden" id="selectedPhuongXa" name="selectedPhuongXa" />
+
+                            <div id="actionName" data-action="Register"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" required />
+                        <label asp-for="Input.Email">Email</label>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3 position-relative">
+                        <input asp-for="Input.Password" type="password" id="password" class="form-control _ge_de_ol" required aria-required="true" placeholder="Password" required />
+                        <label asp-for="Input.Password">Password</label>
+                        <span onclick="togglePasswordVisibility()" class="position-absolute end-0 top-50 translate-middle-y" style="margin-right: 20px; cursor: pointer;">
+                            <i id="eyeIcon" class="fa-solid fa-eye"></i>
+                        </span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3 position-relative">
+                        <input asp-for="Input.ConfirmPassword" type="password" id="confirmPassword" class="form-control _ge_de_ol" aria-required="true" placeholder="Confirm Password" />
+                        <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                        <span onclick="toggleConfirmPasswordVisibility()" class="position-absolute end-0 top-50 translate-middle-y" style="margin-right: 20px; cursor: pointer;">
+                            <i id="eyeIconConfirmPassword" class="fa-solid fa-eye"></i>
+                        </span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="_btn_04">
+                            <button id="registerSubmit" type="submit" style="background-color: #2b3990; color:white; border:none; width:100%">Register</button>
+                        </div>
+                    </div>
+                    <div class="checkbox form-group">
+                        <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Login</a>
+                    </div>
+                      
+
+                </div>
+                    
+            </form>
+        </section>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/main.js"></script>
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+    }
+
+    function toggleConfirmPasswordVisibility() {
+        var confirmPasswordInput = document.getElementById("confirmPassword");
+        if (confirmPasswordInput.type === "password") {
+            confirmPasswordInput.type = "text";
+            eyeIconConfirmPassword.classList.remove("fa-eye");
+            eyeIconConfirmPassword.classList.add("fa-eye-slash");
+        } else {
+            confirmPasswordInput.type = "password";
+            eyeIconConfirmPassword.classList.remove("fa-eye-slash");
+            eyeIconConfirmPassword.classList.add("fa-eye");
+        }
+    }
+</script>

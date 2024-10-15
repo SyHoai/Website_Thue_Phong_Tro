@@ -1,0 +1,116 @@
+﻿@model IEnumerable<DACS_Web.Models.DichVu>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string currentAction = ViewContext.RouteData.Values["action"].ToString();
+}
+
+<style>
+    button {
+        background-color: white !important;
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+</style>
+
+
+<h2 style="text-align:center">@ViewBag.Name</h2>
+
+<div style="padding-bottom:20px">
+    <a asp-action="Create">
+        <button class="btn btn-outline-dark button">
+            <i></i>Thêm mới
+        </button>
+    </a>
+</div>
+<div style="padding-bottom:20px">
+    <a asp-action="DanhSachHienThi">
+        <button class="btn btn-outline-dark button">
+            <i></i>Dịch vụ hiển thị
+        </button>
+    </a>
+    <a asp-action="DanhSachAn">
+        <button class="btn btn-outline-dark button">
+            <i></i>Dịch vụ ẩn
+        </button>
+    </a>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th class="text-center" style="width:30%">
+                Dịch vụ
+            </th>
+            <th class="text-center" style="width:30%">
+                Số tiền
+            </th>
+            <th style="width:30%"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr style="background-color: white">
+            <td class="text-center" style="padding-top:15px" >
+                @Html.DisplayFor(modelItem => item.TenDV)
+            </td>
+            <td class="text-center" style="padding-top:15px">
+                <label>@string.Format("{0:#,##0}", item.Gia) đ</label>
+            </td>
+            <td  >
+                <a asp-action="Edit" asp-route-id="@item.DichVuId">
+                    <button class="btn btn-outline-dark button">
+                        <i></i>Chỉnh sửa
+                    </button>
+                </a>
+                @if (item.TrangThai == true)
+                {
+                    <a asp-action="AnHien" asp-route-id="@item.DichVuId">
+                        <button class="btn btn-outline-dark button">
+                            <i></i>Ẩn
+                        </button>
+                    </a>
+                }
+                else{
+                    <a asp-action="AnHien" asp-route-id="@item.DichVuId">
+                        <button class="btn btn-outline-dark button">
+                            <i></i>Hiện
+                        </button>
+                    </a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <div class="pagination-container">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.PageNumber  ? "active" : "")">
+                        @if (currentAction == "Index")
+                        {
+                            <a class="page-link" href="@Url.Action("Index", new { pageNumber = i })">@i</a>
+                        }
+                        else if (currentAction == "DanhSachHienThi")
+                        {
+                            <a class="page-link" href="@Url.Action("DanhSachHienThi", new { pageNumber = i })">@i</a>
+                        }
+                        else
+                        {
+                            <a class="page-link" href="@Url.Action("DanhSachAn", new { pageNumber = i })">@i</a>
+                        }
+                        
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>

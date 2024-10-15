@@ -1,0 +1,76 @@
+﻿@model Dictionary<string,decimal>
+@inject ApplicationDbContext _context
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> _userManager
+@{
+    ViewData["Title"] = "ChiTietThongKe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    a {
+        color: black
+    }
+
+    button {
+        background-color: white !important;
+    }
+
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+</style>
+
+<h2 style="text-align:center; margin-top:40px">@ViewBag.SoLieu</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="text-center">
+                UserName
+            </th>
+            <th class="text-center" width="35%">
+                Số tiền
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr style="background-color: white">
+                <td class="text-center" style="padding:10px 0px">
+                    @{
+                        ApplicationUser user = await _userManager.FindByIdAsync(item.Key);
+                    }
+                    <a asp-controller="User" asp-action="Details" asp-route-id="@user.UserName">
+                        @user.UserName
+                    </a>
+
+                </td>
+                <td class="text-center" style="padding:10px 0px">
+
+                    <label>@item.Value.ToString("#,##0") đ</label>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<div>
+    <div class="pagination-container">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.PageNumber  ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("ChiTietThongKe", new {id = @ViewBag.DichVuId , month = @ViewBag.Month, year = @ViewBag.Year, pageNumber = i })">@i</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>

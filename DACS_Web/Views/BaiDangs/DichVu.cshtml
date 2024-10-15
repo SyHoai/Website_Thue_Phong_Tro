@@ -1,0 +1,138 @@
+﻿@model DACS_Web.Models.BaiDang
+@using Microsoft.AspNetCore.Identity
+@inject ApplicationDbContext _context
+@inject UserManager<ApplicationUser> _userManager
+@{
+    ViewData["Title"] = "DichVu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<DichVu> dichVu = _context.DinhVu.Where(p => p.DichVuId != 1 && p.DichVuId !=4).ToList();
+    string userId = ViewBag.idTaiKhoan;
+    ApplicationUser user = await _userManager.FindByIdAsync(userId);
+    DanhSachAnh danhSachAnh = _context.DanhSachAnh.FirstOrDefault(p => p.BaiDangId == Model.BaiDangId);
+
+}
+
+<div class="container mt-5" style="background-color:white;border: 2px solid #ccc;border-radius: 10px; padding: 20px;">
+    <div class="row">
+        <div class="col-md-6" style="width: 30%">
+            <a asp-controller="BaiDangs" asp-action="Details" asp-route-id="@Model.BaiDangId">
+                <img src="@danhSachAnh.Url" class="img-fluid" alt="Hình ảnh sản phẩm" style="height: 200px; width: 200px">
+            </a>
+        </div>
+
+        <div class="col-md-6">
+            <a asp-controller="BaiDangs" asp-action="Details" asp-route-id="@Model.BaiDangId">
+                <h4 class=" mb-2" style="font-size:22px;font-weight:700">@Model.TenBD</h4>
+            </a>
+            
+            <span class="lead mb-2" style="display:block;font-weight:700;font-size:14px;color:rgb(155,155,155)">
+                @Model.DienTich.ToString("0.##") m<sup>2</sup>
+            </span>
+            <p class="lead mb-2" style="display:block;color:red;font-weight:700;font-size:18px">
+                @Model.TienThue.ToString("#,##0") đ/ tháng
+            </p>
+
+            <p class="lead mb-2">
+                <i class="fas fa-map-marker-alt"></i>
+                <span style="font-weight:700;font-size:16px;color:rgb(155,155,155)">@Model.TinhThanh</span>
+            </p>
+
+            <p class="lead mb-2">
+                <i class="fa-solid fa-user"></i>
+
+                <a asp-controller="User" asp-action="Details" asp-route-id="@user.UserName" style="text-decoration:none">
+                    <span class="lead mb-2" style="font-weight:700;font-size:16px;color:rgb(155,155,155)">@Model.User.UserName </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<h2 style="text-align:center;margin-top:2%">Dịch vụ</h2>
+
+<div class="col-md-4" style="margin-top:2%; margin-left:35%">
+    <form asp-action="ThanhToan" enctype="multipart/form-data" onsubmit="return kiemTraSoDu()">
+        <label class="control-label">Dịch vụ</label>
+        <div style="display:flex; margin-top:10px">
+
+           
+            @foreach (var dv in dichVu)
+            {
+                @if (dv.TrangThai == true)
+                {
+                    <div class="container" style="background-color:white; border: 2px solid #ccc;border-radius: 10px;height:40px;">
+                        <input type="radio" id="@dv.TenDV" name="option" value="@dv.DichVuId" style="margin-top:10px" onchange="showPrice('@dv.Gia')">
+                        <label for="@dv.TenDV">@dv.TenDV</label>
+                    </div>
+                }
+                
+            }
+        </div>
+
+        <div style="margin:20px 0px">
+            <label class="control-label">Ngày</label>
+            <input style="margin-top:10px" type="number" id="SoNgay" name="SoNgay" class="form-control" placeholder="0.00" min="1" step="1" onchange="Price()">
+        </div>
+
+        <div style="margin:20px 0px">
+            <label class="control-label">Giá</label>
+            <div class="input-group" style="margin-top:10px">
+                <input type="number" id="TienDichVu" name="TienDichVu" class="form-control" placeholder="0.00" disabled />
+                <div class="input-group-append">
+                    <span class="input-group-text" style="padding:10px">đ</span>
+                </div>
+            </div>
+        </div>
+         
+       
+
+
+        <input type="hidden" id="soTienTK" name="TienTk" value="@user.SoDu" />
+
+        <input type="hidden"  name="BaiDangId" value="@Model.BaiDangId" />
+        <div class="_btn_04">
+            <input type="submit" value="Thanh toán" style="width:100%; background-color: #2b3990;color:white;border:none" />
+        </div>
+    </form>
+</div>
+
+
+
+<script>
+    var currentPrice = 0;
+    function showPrice(price) {
+        currentPrice = price;
+        document.getElementById("TienDichVu").value = price;
+        document.getElementById("SoNgay").value = 1;
+
+    }
+
+    function Price() {
+
+        var TienDichVu = currentPrice;
+        var SoNgay = document.getElementById("SoNgay").value;
+        var result = (TienDichVu * SoNgay).toFixed(2); 
+        document.getElementById("TienDichVu").value = result;
+    }
+
+    function kiemTraSoDu() {
+        var selectedOption = document.querySelector('input[name="option"]:checked');
+        if (!selectedOption) {
+            alert("Vui lòng chọn một dịch vụ.");
+            return false;
+        }
+
+        var price = document.getElementById("TienDichVu").value;
+        var soTienTk = document.getElementById("soTienTK").value;
+        if (parseInt(soTienTk) < parseInt(price)) {
+            if (confirm("Số dư không đủ. Bạn có muốn chuyển đến trang nạp tiền không?")) {
+                window.location.href = "/User/NapTien";
+            }
+            return false;
+        }
+
+
+        return true;
+    }
+</script>

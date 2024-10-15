@@ -1,0 +1,220 @@
+﻿@model DACS_Web.Models.BaiDang
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center">Tạo mới bài đăng</h2>
+<style>
+
+    .form-group
+    {
+        padding: 0px 0px 17px 0px !important;
+    }
+
+    select {
+        padding: 15px 15px 15px 15px !important;
+    }
+</style>
+
+
+@* <div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data" onsubmit="return CheckImage()">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TenBD" class="control-label">Tiêu đề</label>
+                <input asp-for="TenBD" class="form-control" />
+                <span asp-validation-for="TenBD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DienTich" class="control-label">Diện tích</label>
+                <input asp-for="DienTich" type="number" min="1" step="0.1" class="form-control" />
+                <span asp-validation-for="DienTich" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TinhThanh" class="control-label">Tỉnh thành</label>
+                <select asp-for="TinhThanh" class="form-control" id="thanhPhoSelect" required>
+                    <option value="">Chọn tỉnh thành</option>
+                </select>
+                <span asp-validation-for="TinhThanh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuanHuyen" class="control-label">Quận, huyện</label>
+                <select asp-for="QuanHuyen" class="form-control" id="quanHuyenSelect" required></select>
+                <span asp-validation-for="QuanHuyen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhuongXa" class="control-label">Phường, xã</label>
+                <select asp-for="PhuongXa" class="form-control" id="phuongXaSelect" required></select>
+                <span asp-validation-for="PhuongXa" class="text-danger"></span>
+            </div>
+
+            <input type="hidden" id="selectedTinhThanh" name="selectedTinhThanh" />
+            <input type="hidden" id="selectedQuanHuyen" name="selectedQuanHuyen" />
+            <input type="hidden" id="selectedPhuongXa" name="selectedPhuongXa" />
+
+            <div id="actionName" data-action="@ViewContext.RouteData.Values["action"]"></div>
+
+            <div class="form-group">
+                <label asp-for="DiaChi" class="control-label">Địa chỉ</label>
+                <input asp-for="DiaChi" class="form-control" />
+                <span asp-validation-for="DiaChi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoTa" class="control-label">Mô tả</label>
+                <textarea asp-for="MoTa" class="form-control" style="width: 100%; height: 200px;"></textarea>
+                <span asp-validation-for="MoTa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TienThue" class="control-label">Tiền thuê</label>
+                <input asp-for="TienThue" min="0" type="number" step="1000" class="form-control" />
+                <span asp-validation-for="TienThue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TienCoc" class="control-label">Tiền cọc</label>
+                <input asp-for="TienCoc" min="0" type="number" step="1000" class="form-control" />
+                <span asp-validation-for="TienCoc" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LoaiPhongId" class="control-label">Loại phòng</label>
+                <select asp-for="LoaiPhongId" class="form-control" asp-items="ViewBag.LoaiPhongId"></select>
+            </div>
+
+            <div class="form-group">
+                <input type="file" id="imageInput" name="filses" accept="image/*" style="display: none;" multiple required>
+                <button id="chooseImageButton">Chọn hình ảnh</button>
+                <div id="previewImages" name="files"></div>
+            </div>
+
+            
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div> *@
+
+<div class="row">
+    <div class="col-md-12">
+        <section>
+            <form asp-action="Create" enctype="multipart/form-data" onsubmit="return CheckImage()">
+                <div class="form-03-main" style="width:60%;">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div style="display:flex">
+
+                        <div style="width:50%; margin-right:50px">
+                            <div class="form-floating mb-3">
+                                <input asp-for="TenBD" class="form-control" required />
+                                <label asp-for="TenBD" class="control-label">Tiêu đề</label>
+                                <span asp-validation-for="TenBD" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="DienTich" type="number" min="1" step="0.1" class="form-control" required />
+                                <label asp-for="DienTich" class="control-label">Diện tích</label>
+                                <span asp-validation-for="DienTich" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="TienThue" min="0" type="number" step="1000" class="form-control" required />
+                                <label asp-for="TienThue" class="control-label">Tiền thuê</label>
+                                <span asp-validation-for="TienThue" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="TienCoc" min="0" type="number" step="1000" class="form-control" required />
+                                <label asp-for="TienCoc" class="control-label">Tiền cọc</label>
+                                <span asp-validation-for="TienCoc" class="text-danger"></span>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div style="width:50%">
+                            <div class="form-group">
+                                <select asp-for="TinhThanh" class="form-control" id="thanhPhoSelect" required>
+                                    <option value="">Chọn tỉnh thành</option>
+                                </select>
+                                <span asp-validation-for="TinhThanh" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <select asp-for="QuanHuyen" class="form-control" id="quanHuyenSelect" required></select>
+                                <span asp-validation-for="QuanHuyen" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <select asp-for="PhuongXa" class="form-control" id="phuongXaSelect" required></select>
+                                <span asp-validation-for="PhuongXa" class="text-danger"></span>
+                            </div>
+
+                            <input type="hidden" id="selectedTinhThanh" name="selectedTinhThanh" />
+                            <input type="hidden" id="selectedQuanHuyen" name="selectedQuanHuyen" />
+                            <input type="hidden" id="selectedPhuongXa" name="selectedPhuongXa" />
+
+                            <div id="actionName" data-action="@ViewContext.RouteData.Values["action"]"></div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="DiaChi" class="form-control" required />
+                                <label asp-for="DiaChi" class="control-label">Địa chỉ</label>
+                                <span asp-validation-for="DiaChi" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea asp-for="MoTa" class="form-control" style="width: 100%; height: 200px;" required></textarea>
+                        <label asp-for="MoTa" class="control-label">Mô tả</label>
+                        <span asp-validation-for="MoTa" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <select asp-for="LoaiPhongId" class="form-control" asp-items="ViewBag.LoaiPhongId"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="file" id="imageInput" name="filses" accept="image/*" style="display: none;" multiple required>
+                        <button id="chooseImageButton">Chọn hình ảnh</button>
+                        <div id="previewImages" name="files"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="_btn_04">
+                            <input type="submit" value="Create" class="btn btn-primary" style="background-color: #2b3990; color:white; border:none; width:100%" />
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox form-group">
+                        <a asp-action="QuanLi">Back to List</a>
+                    </div>
+
+
+                </div>
+
+            </form>
+        </section>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/main.js"></script>
+<script>
+    function CheckImage() {
+        var input = document.getElementById('imageInput');
+        if (input.files.length === 0) {
+            alert('Please select at least one file.');
+            return false;
+        }
+        return true;
+    }
+</script>

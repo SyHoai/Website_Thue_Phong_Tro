@@ -1,0 +1,174 @@
+﻿@model IEnumerable<DACS_Web.Models.BaiDang>
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> _userManager
+@inject ApplicationDbContext _context;
+@{
+    ViewData["Title"] = "QuanLi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string currentAction = ViewContext.RouteData.Values["action"].ToString();
+}
+
+<h2 style="text-align:center">@ViewBag.Name</h2>
+<style>
+    a {
+        text-decoration: none;
+    }
+
+    button {
+        background-color: white !important;
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+</style>
+<div style="padding-bottom:20px">
+    <a asp-controller="BaiDangs" asp-action="DanhSachHienThi" asp-route-Id="">
+        <button class="btn btn-outline-dark button">
+            <i></i>Đang hiển thị
+        </button>
+    </a>
+    <a asp-controller="BaiDangs" asp-action="DanhSachTuChoi" asp-route-Id="">
+        <button class="btn btn-outline-dark button">
+            <i></i>Bị từ chối
+        </button>
+    </a>
+    <a asp-controller="BaiDangs" asp-action="DanhSachChoDuyet" asp-route-Id="">
+        <button class="btn btn-outline-dark button">
+            <i></i>Đang chờ duyệt
+        </button>
+    </a>
+</div>
+
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justifycontent-center" style="margin-top: 10px">
+    @foreach (var item in Model)
+    {
+        <div class="col mb-5">
+            <div class="card gap-3" style="width: 16rem">
+                @{
+                    DanhSachAnh danhSachAnh = _context.DanhSachAnh.FirstOrDefault(p => p.BaiDangId == item.BaiDangId);
+                    List<DanhSachAnh> listAnh = _context.DanhSachAnh.Where(p => p.BaiDangId == item.BaiDangId).Take(3).ToList();
+                    string dientich = item.DienTich.ToString("0.##");
+                    ApplicationUser user = await _userManager.FindByIdAsync(@item.UserId);
+                }
+
+                @if (item.LoaiBaiDangId != 2)
+                {
+                    @if (item.LoaiBaiDangId == 1)
+                    {
+                        <a asp-action="Details" asp-route-id="@item.BaiDangId">
+                            <img src="@danhSachAnh.Url" class="img-fluid" alt="Hình ảnh bài đăng" style="height: 230px; width: 100%">
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="Details" asp-route-id="@item.BaiDangId">
+                            <img src="@danhSachAnh.Url" class="img-fluid" alt="Hình ảnh bài đăng" style="height: 200px; width: 100%">
+                        </a>
+                    }
+
+                }
+                else
+                {
+                    <a asp-action="Details" asp-route-id="@item.BaiDangId">
+                        <img src="@danhSachAnh.Url" class="img-fluid" alt="Hình ảnh bài đăng" style="height: 170px; width: 100%">
+                    </a>
+                    <div style="height:44px;white-space: nowrap;">
+                        @foreach (var anh in listAnh)
+                        {
+                            <a asp-action="Details" asp-route-id="@item.BaiDangId">
+                                <img src="@anh.Url" class="img-fluid" alt="Hình ảnh bài đăng" style="height: 100%; width: 30%">
+                            </a>
+                        }
+                    </div>
+                }
+
+                <div style="display:flex">
+
+                    <div style="width:60%; margin-left:10px;">
+                        @if (item.LoaiBaiDangId == 3)
+                        {
+                            <p class="lead mb-2" style="margin:0px!important">
+                                <i class="fa-solid fa-medal"></i>
+                                <span style="font-weight:700;font-size:14px;color:rgb(155,155,155)">Tin ưu tiên</span>
+                            </p>
+                        }
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <a asp-controller="BaiDangs" asp-action="Details" asp-route-id="@item.BaiDangId" style="color:black;text-decoration: none; ">
+                        <h5 class=" mb-2" style="font-size:22px;font-weight:700">@item.TenBD</h5>
+                    </a>
+                    <span class="lead mb-2" style="display:block;font-weight:700;font-size:14px;color:rgb(155,155,155)">@dientich m<sup>2</sup></span>
+                    <p class="lead mb-2" style="display:block;color:red;font-weight:1000;font-size:16px">@item.TienThue.ToString("#,##0") đ/ tháng</p>
+                  
+                    <p class="lead mb-2">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span style="font-weight:700;font-size:14px;color:rgb(155,155,155)">@item.TinhThanh</span>
+                    </p>
+                    <p class="lead mb-2">
+                        <i class="fa-solid fa-stopwatch"></i>
+                        <span style="font-weight:700;font-size:14px;color:rgb(155,155,155)">Hết hạn: @item.NgayHetHan.ToString("dd-MM-yyyy") </span>
+                    </p>
+
+                    <p class="lead mb-2">
+                        <i class="fa-solid fa-user"></i>
+
+                        <a asp-controller="User" asp-action="Details" asp-route-id="@user.UserName" style="text-decoration:none">
+                            <span class="lead mb-2" style="font-weight:700;font-size:14px;color:rgb(155,155,155)">@item.User.UserName </span>
+                        </a>
+                    </p>
+                </div>
+                <div>
+                    @if (item.TrangThai == false && item.Duyet == 0)
+                    {
+
+                        <a asp-controller="BaiDangs" asp-action="Duyet" asp-route-Id="@item.BaiDangId">
+                            <button class="btn btn-outline-dark button">
+                                <i></i>Duyệt
+                            </button>
+                        </a>
+                        <a asp-controller="BaiDangs" asp-action="TuChoi" asp-route-Id="@item.BaiDangId">
+                            <button class="btn btn-outline-dark button">
+                                <i></i>Từ chối
+                            </button>
+                        </a>
+                    }
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+<div>
+    <div class="pagination-container">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.PageNumber  ? "active" : "")">
+                        @if (currentAction == "QuanLi")
+                        {
+                            <a class="page-link" href="@Url.Action("QuanLi", new { pageNumber = i })">@i</a>
+                        }
+                        else if (currentAction == "DanhSachHienThi")
+                        {
+                            <a class="page-link" href="@Url.Action("DanhSachHienThi", new { pageNumber = i })">@i</a>
+                        }
+                        else if (currentAction == "DanhSachTuChoi")
+                        {
+                            <a class="page-link" href="@Url.Action("DanhSachTuChoi", new { pageNumber = i })">@i</a>
+                        }
+                        else
+                        {
+                            <a class="page-link" href="@Url.Action("DanhSachChoDuyet", new { pageNumber = i })">@i</a>
+                        }
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>

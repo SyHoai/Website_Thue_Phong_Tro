@@ -1,0 +1,74 @@
+﻿@model Dictionary<int,decimal>
+@inject ApplicationDbContext _context
+@{
+    ViewData["Title"] = "ThongKe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    a {
+        color: black
+    }
+
+    button {
+        background-color: white !important;
+    }
+</style>
+
+<h2 style="text-align:center">Thống kê</h2>
+    <form action="ThongKeThang" method="get" class="d-flex align-items-center gap-3">
+        <label for="month">Tháng:</label>
+        <select id="month" name="month" required>
+            <option value="0" selected>Tất cả</option>
+            @for (int m = 1; m <= 12; m++) 
+            {
+            <option value="@m">@m</option>
+            }
+        </select>
+        <label for="year">Năm:</label>
+        <select id="year" name="year" required>
+            <option value="" disabled selected hidden>Chọn năm</option>
+            @for (int m = 2020; m <= DateTime.Now.Year; m++)
+            {
+                <option value="@m">@m</option>
+            }
+        </select>
+        <button class="btn btn-outline-dark button px-3" type="submit" style="height:26px;padding:0px">Xem thống kê</button>
+    </form>
+
+
+<h4 style="text-align:center; margin-top:40px">@ViewBag.SoLieu</h4>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="text-center">
+                Dịch vụ
+            </th>
+            <th class="text-center" width="35%">
+                Số tiền
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr style="background-color: white">
+                <td class="text-center"style="padding:10px 0px">
+                    @{
+                        DichVu dichVu = _context.DinhVu.FirstOrDefault(p => p.DichVuId == item.Key);
+                    }
+                    <a asp-controller="DichVus" asp-action="ChiTietThongKe" asp-route-id="@dichVu.DichVuId" asp-route-month="@ViewBag.Month" asp-route-year="@ViewBag.Year">
+                        @dichVu.TenDV
+                    </a>
+                    
+                </td>
+                <td class="text-center" style="padding:10px 0px">
+
+                    <label>@item.Value.ToString("#,##0") đ</label>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

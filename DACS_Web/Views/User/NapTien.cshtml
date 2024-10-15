@@ -1,0 +1,58 @@
+﻿@model DACS_Web.Models.ApplicationUser
+@{
+    ViewData["Title"] = "NapTien";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center; margin-top:50px">Nạp tiền</h2>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <section>
+            <form asp-action="Payment" enctype="multipart/form-data" style="margin:10px">
+                <div class="_lk_de">
+                    <div class="form-03-main">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-floating mb-3" >
+                            <input value="@Model.UserName"  class="form-control" disabled/>
+                            <label asp-for="UserName" class="control-label">Tên tài khoản</label>
+                        </div>
+
+                        <div class="form-group" >
+                            
+                            <div class="form-floating mb-3" style="display:flex">
+                                <input type="number" style=" border-radius: 20px 0 0 20px;" name="SoTienNap" min="1000" step="1000" class="form-control" placeholder="0.00" required />
+                                <label for="SoTienNap" class="control-label">Số tiền nạp</label>
+                                <span class="input-group-text" style="padding:10px; margin-left: -5px;">đ</span>
+                            </div>
+                            <span class="text-danger"></span>
+
+                        </div>
+
+
+                        <div class="form-group" style="display:flex;">
+                            <div>
+                                <label class="control-label">Phương thức thanh toán</label>
+                                <div class="input-group" style="margin-top:10px">
+                                    <input type="radio" id="paypal" name="paymentMethod" checked>
+                                    <img src="~/images/avatar/momo.jpg" alt="Alternate Text" style="margin:10px;width:50px;height:40px" />
+                                    <label style="margin:18px 10px 10px 10px">Momo</label>
+                                </div>
+                    
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="_btn_04">
+                                <input type="submit" value="Nạp" style="width:100%; background-color: #2b3990;color:white;border:none" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+

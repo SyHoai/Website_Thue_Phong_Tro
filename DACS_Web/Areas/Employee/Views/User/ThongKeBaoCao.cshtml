@@ -1,0 +1,86 @@
+﻿@model Dictionary<string,int>
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> _userManager
+@{
+    ViewData["Title"] = "ThongKeBaoCao";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+</style>
+<h2 style="text-align:center">@ViewBag.Name</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                User name
+            </th>
+            <th>
+                Số báo cáo
+            </th>
+            <th style="width:30%">
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr style="background-color: white;border: 2px solid #ccc ; margin-top: 20px;">
+                <td style="padding-top:15px">
+                    @{
+                        ApplicationUser nguoiNhan = await _userManager.FindByIdAsync(item.Key);
+                    }
+                    <a asp-controller="User" asp-action="Details" asp-route-id="@nguoiNhan.UserName">
+                        @nguoiNhan.UserName
+                    </a>
+                    
+                </td>
+                <td style="padding-top:15px">
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @if (nguoiNhan.TrangThai == true)
+                    {
+                        <a asp-controller="User" asp-action="TrangThai" asp-route-id="@nguoiNhan.Id" asp-route-actionName="ThongKe">
+                            <button class="btn btn-outline-dark button">
+                                <i></i>Khóa
+                            </button>
+                        </a>
+
+                    }
+                    else
+                    {
+                        <a asp-controller="User" asp-action="TrangThai" asp-route-id="@nguoiNhan.Id" asp-route-actionName="ThongKe">
+                            <button class="btn btn-outline-dark">
+                                <i></i>Mở khóa
+                            </button>
+                        </a>
+                    }
+                </td>
+            </tr>
+            
+        }
+    </tbody>
+</table>
+
+<div>
+    <div class="pagination-container">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.PageNumber  ? "active" : "")">
+
+                        <a class="page-link" href="@Url.Action("ThongKeBaoCao", new { pageNumber = i })">@i</a>
+
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>

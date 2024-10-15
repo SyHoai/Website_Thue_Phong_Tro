@@ -1,0 +1,45 @@
+﻿@model DACS_Web.Models.ApplicationUser
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> _userManager
+@{
+    ViewData["Title"] = "BaoCao";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string diaChi = Model.QuanHuyen + ", " + Model.TinhThanh;
+}
+<div style="display:flex;margin-top:50px">
+    <div style="background-color:white; width:30%; margin:5% 5% 0px 0px;top: 50px; height:fit-content;border: 2px solid #ccc;border-radius: 10px; padding:0px 10px">
+        <div>
+            <img src="@Model.Avatar" style="width:90px;height:90px;border-radius: 50%" />
+        </div>
+        <h4>@Model.UserName</h4>
+        <p class="lead mb-2">
+            <i class="fa-solid fa-calendar-days"></i>
+            <label style="font-weight:500;font-size:16px;">Ngày tham gia: @Model.NgayThamGia.ToString("dd-MM-yyyy") </label>
+        </p>
+        <p class="lead mb-2">
+            <i class="fa-solid fa-phone"></i>
+            <label style="font-weight:500;font-size:16px;">@Model.PhoneNumber </label>
+        </p>
+        <p class="lead mb-2">
+            <i class="fa-solid fa-location-dot"></i>
+            <label style="font-weight:500;font-size:16px;">@diaChi</label>
+        </p>
+    </div>
+
+    <div style="width:60%">
+        <form asp-action="AddBaoCao" asp-controller="User" method="post">
+            <div class="form-group" style="margin-bottom:10px">
+                <label class="control-label">Nội dung:</label>
+                <textarea name="textNoiDung" class="form-control" rows="3" required></textarea>
+                <span class="text-danger"></span>
+            </div>
+            <input type="hidden" name="idNguoiNhan" value="@Model.Id" />
+
+            <div class="form-group">
+                <input type="submit" value="Gửi báo cáo" class="btn btn-primary" />
+            </div>
+        </form>
+
+        
+    </div>
+</div>

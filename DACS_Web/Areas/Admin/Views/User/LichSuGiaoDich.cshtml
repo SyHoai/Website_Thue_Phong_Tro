@@ -1,0 +1,73 @@
+﻿@model List<HoaDon>
+@inject ApplicationDbContext _context;
+@{
+    ViewData["Title"] = "LichSuGiaoDich";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    p{
+        margin-bottom: 8px;
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+</style>
+
+<h1 style="text-align:center">Lịch sử giao dịch</h1>
+@foreach (var item in Model)
+{
+
+    <div style="display:flex;margin:30px;border: 2px solid #ccc;border-radius: 10px;">
+        @{
+            DichVu dichVu = _context.DinhVu.Find(item.DichVuId);
+        }
+        <div style="width: 70%; margin:15px">
+            <h4>@dichVu.TenDV</h4>
+            <p>
+                Nội dung: @item.NoiDung
+            </p>
+
+            <p>
+                Thời gian: @item.NgayLap.ToString("dd-MM-yyyy HH:mm:ss")
+            </p>
+        </div>
+
+        <div style="margin-top:4%">
+            @if (item.DichVuId ==1)
+            {
+                <p style="color:green;font-weight: 500">
+                    + @item.TongTien.ToString("#,##0")đ
+                </p>
+            }
+            else
+            {
+                <p style="color:red;font-weight: 500">
+                    - @item.TongTien.ToString("#,##0")đ
+                </p>
+            }
+        </div>
+    </div>
+}
+
+<div>
+    <div class="pagination-container">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.PageNumber  ? "active" : "")">
+
+                        <a class="page-link" href="@Url.Action("LichSuGiaoDich", new { pageNumber = i })">@i</a>
+
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
